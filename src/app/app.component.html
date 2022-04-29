@@ -1,0 +1,39 @@
+<div red [isColor]="isRed">
+  <header red [isColor]="isRed" class="header">
+    To-do List
+
+    <button
+      class="change-color-button"
+      [ngClass]="{ color: isRed }"
+      *ngIf="isRed"
+      (click)="changeColor()"
+    >
+      Red
+    </button>
+
+    <button
+      class="change-color-button"
+      [ngClass]="{ color: isRed }"
+      *ngIf="!isRed"
+      (click)="changeColor()"
+    >
+      Black
+    </button>
+  </header>
+  <input-field
+    [colorCond]="isRed"
+    (itemAdded)="addItem($event)"
+    (hideItems)="toHide($event)"
+  >
+  </input-field>
+  <ng-container *view="!leverHide">
+    <item
+      *ngFor="let item of itemList; let index = index"
+      [colorCond]="isRed"
+      [itemIndex]="index"
+      [itemText]="item"
+      (itemDeleted)="removeItem(index)"
+      (itemEdited)="editItem($event, index)"
+    ></item>
+  </ng-container>
+</div>

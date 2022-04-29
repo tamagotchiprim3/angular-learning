@@ -1,0 +1,43 @@
+<div class="component-wrapper">
+  <div class="item-name">
+    <div *ngIf="isEdit">
+      {{ itemText }}
+    </div>
+
+    <div *ngIf="!isEdit">
+      <input
+        [ngClass]="{ color: colorCond }"
+        type="text"
+        [(ngModel)]="itemText"
+      />
+    </div>
+  </div>
+
+  <div class="action-buttons">
+    <button
+      [ngClass]="{ color: colorCond, remove: true }"
+      id="removeButton"
+      (click)="removeItem()"
+    >
+      Remove
+    </button>
+
+    <button
+      [ngClass]="{ color: colorCond, edit: true }"
+      *ngIf="isEdit"
+      id="editButton"
+      (click)="editItem()"
+    >
+      Edit
+    </button>
+
+    <button
+      [ngClass]="{ color: colorCond, edit: true }"
+      *ngIf="!isEdit"
+      id="editButton"
+      (click)="editItem()"
+    >
+      Save
+    </button>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div [ngClass]="{ color: colorCond }">
+  <input [ngClass]="{ color: colorCond }" type="text" [(ngModel)]="itemText" />
+  <button [ngClass]="{ color: colorCond, addButton: true }" (click)="addItem()">
+    Add
+  </button>
+
+  <button
+    [ngClass]="{ color: colorCond, hideButton: true }"
+    *ngIf="isHideItems"
+    (click)="toHide()"
+  >
+    Hide
+  </button>
+
+  <button
+    [ngClass]="{ color: colorCond, hideButton: true }"
+    *ngIf="!isHideItems"
+    (click)="toHide()"
+  >
+    View
+  </button>
+</div>
